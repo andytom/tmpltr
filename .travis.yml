@@ -1,0 +1,23 @@
+---
+language: go
+
+go:
+  - 1.8
+  - tip
+
+addons:
+   apt:
+     sources:
+       - sourceline: 'ppa:masterminds/glide'
+     packages:
+       - glide
+
+install:
+  - glide install
+  - go get github.com/golang/lint/golint
+
+script:
+  - make check
+
+notifications:
+  email: false
