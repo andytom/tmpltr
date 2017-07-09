@@ -1,0 +1,8 @@
+meta:
+  description: An example template
+
+questions:
+  - name: username
+    type: input
+    message: What is your name?
+    required: true

@@ -1,0 +1,8 @@
+# Editor Files
+*.swp
+
+# 3rd Party libs
+vendor/*
+
+# Compiled binary
+tmpltr
