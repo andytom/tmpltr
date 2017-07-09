@@ -1,5 +1,6 @@
 tmpltr
 ======
+[![Build Status](https://travis-ci.org/andytom/tmpltr.svg?branch=master)](https://travis-ci.org/andytom/tmpltr)
 
 Overview
 --------
