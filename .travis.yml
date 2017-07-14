@@ -19,5 +19,9 @@ install:
 script:
   - make check
 
+cache:
+  directories:
+    - ~/.glide/cache/
+
 notifications:
   email: false
