@@ -1,0 +1,21 @@
+meta:
+  description: Choose a license for your project (from the MIT or Apache 2.0)
+
+questions:
+  - name: author
+    type: input
+    message: Who is the author?
+    required: true
+
+  - name: year
+    type: input
+    message: What year it is?
+    required: true
+
+  - name: license
+    type: select
+    message: Pick a license to use
+    options:
+      - "Apache Software License 2.0"
+      - "MIT" 
+    default: "MIT" 
