@@ -19,6 +19,18 @@ install:
 script:
   - make check
 
+before_deploy:
+  - go get github.com/tcnksm/ghr
+  - go get github.com/mitchellh/gox
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: make release
+    on:
+      tags: true
+      condition: $TRAVIS_GO_VERSION =~ ^1\.8\.[0-9]+$
+
 cache:
   directories:
     - ~/.glide/cache/

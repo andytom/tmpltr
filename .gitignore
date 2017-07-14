@@ -6,3 +6,4 @@ vendor/*
 
 # Compiled binary
 tmpltr
+.out/*
