@@ -10,6 +10,11 @@ VERSION = $(shell git describe --exact-match --tags 2>/dev/null)
 # Build Flags
 LDFLAGS = -ldflags "-X cmd.version.version=${VERSION}"
 
+# Build directory and upload dest
+BUILD_DIR = .out
+REPO_OWNER = andytom
+REPO_NAME = tmpltr
+
 # -- High level targets --
 # We only list these targets in the help. The other targets can still be used
 # but it is generally better to call one of these.
@@ -28,6 +33,17 @@ compile: clean check ## Checks and builds the app for the local machine arch
 
 .PHONY: check
 check: test vet lint ## Runs the tests, go vet and golint
+
+.PHONY: cross
+cross: clean ## Cross compiles the app for OSX and Linux
+	@echo "-- Building --"
+	@mkdir -p ${BUILD_DIR}
+	@gox ${LDFLAGS} -os="darwin linux" -osarch="!darwin/arm !darwin/arm64" -output="${BUILD_DIR}/{{.Dir}}_{{.OS}}_{{.Arch}}"
+
+.PHONY: release
+release: cross ## Cross compiles the app and uploads the binaries to github
+	@echo "-- Uploading --"
+	@ghr -u ${REPO_OWNER} -r ${REPO_NAME} ${VERSION} ${BUILD_DIR}
 
 # -- Low level targets --
 # These targets are more low level and not included in the help. You can call
@@ -51,3 +67,4 @@ vet:
 .PHONY: clean
 clean:
 	@go clean
+	@rm -rf ${BUILD_DIR}
