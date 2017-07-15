@@ -1,6 +1,7 @@
 tmpltr
 ======
 [![Build Status](https://travis-ci.org/andytom/tmpltr.svg?branch=master)](https://travis-ci.org/andytom/tmpltr)
+[![codecov](https://codecov.io/gh/andytom/tmpltr/branch/master/graph/badge.svg)](https://codecov.io/gh/andytom/tmpltr)
 
 Overview
 --------

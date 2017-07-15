@@ -19,6 +19,10 @@ install:
 script:
   - make check
 
+after_success:
+  - make coverage
+  - bash <(curl -s https://codecov.io/bash)
+
 before_deploy:
   - go get github.com/tcnksm/ghr
   - go get github.com/mitchellh/gox
