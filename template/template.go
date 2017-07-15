@@ -126,7 +126,7 @@ func (t *Template) Execute(targetRoot string, data map[string]interface{}) error
 			return os.MkdirAll(targetPath, info.Mode())
 		}
 
-		// If this is a file we proces the source file as a template,
+		// If this is a file we process the source file as a template,
 		// execute it into a new file and set the mode.
 
 		// Parse the template first so we don't create a file

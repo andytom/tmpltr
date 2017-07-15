@@ -2,6 +2,7 @@ tmpltr
 ======
 [![Build Status](https://travis-ci.org/andytom/tmpltr.svg?branch=master)](https://travis-ci.org/andytom/tmpltr)
 [![codecov](https://codecov.io/gh/andytom/tmpltr/branch/master/graph/badge.svg)](https://codecov.io/gh/andytom/tmpltr)
+[![Go Report Card](https://goreportcard.com/badge/github.com/andytom/tmpltr)](https://goreportcard.com/report/github.com/andytom/tmpltr)
 
 Overview
 --------
@@ -25,7 +26,7 @@ Getting Started
 
 Download the pre-compiled binary for your OS from the
 [release page](https://github.com/andytom/tmpltr/releases/latest) and copy it
-into your path.
+into a directory in your PATH.
 
 ### Usage
 
@@ -47,9 +48,10 @@ Getting Involved
 
 ### Spotted a Bug? Need a Features?
 
-If you notice a bug or have a feature suggestion please create a github issue.
+If you notice a bug or have a feature suggestion please [create an issue in
+github](https://github.com/andytom/tmpltr/issues/new).
 
 ### Contributing
 
-If you want to help contribute please see `CONTRIBUTING.md` for more
-information on requirements for PRs and other useful information.
+If you want to help contribute please see [`CONTRIBUTING.md`](CONTRIBUTING.md)
+for more information on requirements for PRs and other useful information.
