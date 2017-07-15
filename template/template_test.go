@@ -89,7 +89,7 @@ func TestGetQuestions(t *testing.T) {
 			name: "Single Question",
 			template: Template{
 				Questions: []question{
-					question{
+					{
 						Name:    "Test",
 						Type:    "input",
 						Message: "Message",
@@ -109,12 +109,12 @@ func TestGetQuestions(t *testing.T) {
 			name: "Multiple Question",
 			template: Template{
 				Questions: []question{
-					question{
+					{
 						Name:    "Test 1",
 						Type:    "input",
 						Message: "Message",
 					},
-					question{
+					{
 						Name:    "Test 2",
 						Type:    "input",
 						Message: "Message",
@@ -140,7 +140,7 @@ func TestGetQuestions(t *testing.T) {
 			name: "Dummy Type",
 			template: Template{
 				Questions: []question{
-					question{
+					{
 						Type: "Dummy",
 					},
 				},

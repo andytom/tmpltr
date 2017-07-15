@@ -2,6 +2,7 @@ tmpltr
 ======
 [![Build Status](https://travis-ci.org/andytom/tmpltr.svg?branch=master)](https://travis-ci.org/andytom/tmpltr)
 [![codecov](https://codecov.io/gh/andytom/tmpltr/branch/master/graph/badge.svg)](https://codecov.io/gh/andytom/tmpltr)
+[![Go Report Card](https://goreportcard.com/badge/github.com/andytom/tmpltr)](https://goreportcard.com/report/github.com/andytom/tmpltr)
 
 Overview
 --------
