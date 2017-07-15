@@ -1,10 +1,10 @@
 package template
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 )
 
@@ -24,7 +24,7 @@ func OpenStore(dir string) (Store, error) {
 }
 
 func (ts *Store) getPath(key string) string {
-	return fmt.Sprintf("%s/%s", ts.dir, key)
+	return path.Join(ts.dir, key)
 }
 
 // List lists all the templates that are in a Store. If there is a template
