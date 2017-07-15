@@ -26,7 +26,7 @@ Getting Started
 
 Download the pre-compiled binary for your OS from the
 [release page](https://github.com/andytom/tmpltr/releases/latest) and copy it
-into your path.
+into a directory in your PATH.
 
 ### Usage
 
@@ -48,9 +48,10 @@ Getting Involved
 
 ### Spotted a Bug? Need a Features?
 
-If you notice a bug or have a feature suggestion please create a github issue.
+If you notice a bug or have a feature suggestion please [create an issue in
+github](https://github.com/andytom/tmpltr/issues/new).
 
 ### Contributing
 
-If you want to help contribute please see `CONTRIBUTING.md` for more
-information on requirements for PRs and other useful information.
+If you want to help contribute please see [`CONTRIBUTING.md`](CONTRIBUTING.md)
+for more information on requirements for PRs and other useful information.
