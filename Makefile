@@ -45,6 +45,16 @@ release: cross ## Cross compiles the app and uploads the binaries to github
 	@echo "-- Uploading --"
 	@ghr -u ${REPO_OWNER} -r ${REPO_NAME} ${VERSION} ${BUILD_DIR}
 
+.PHONY: coverage
+coverage: clean ## Runs the tests but generates a coverage profile
+	@touch coverage.txt
+	@for d in ${PKGS}; do \
+		touch profile.out ; \
+		go test -race -coverprofile=profile.out -covermode=atomic $$d ; \
+		cat profile.out >> coverage.txt ; \
+		rm profile.out ; \
+	done
+
 # -- Low level targets --
 # These targets are more low level and not included in the help. You can call
 # them directly but generally you would use the higher level target.
@@ -52,7 +62,7 @@ release: cross ## Cross compiles the app and uploads the binaries to github
 .PHONY: test
 test:
 	@echo "-- Running Tests --"
-	@go test ${PKGS} -cover
+	@go test ${PKGS} -cover -race
 
 .PHONY: lint
 lint:
@@ -67,4 +77,4 @@ vet:
 .PHONY: clean
 clean:
 	@go clean
-	@rm -rf ${BUILD_DIR}
+	@rm -rf ${BUILD_DIR} coverage.txt profile.out

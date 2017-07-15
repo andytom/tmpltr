@@ -7,3 +7,7 @@ vendor/*
 # Compiled binary
 tmpltr
 .out/*
+
+# Coverage output
+profile.out
+coverage.txt
