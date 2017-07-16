@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"text/template"
 
 	"github.com/AlecAivazis/survey"
 	"gopkg.in/yaml.v2"
@@ -128,28 +127,26 @@ func (t *Template) Execute(targetRoot string, data map[string]interface{}) error
 
 		// If this is a file we process the source file as a template,
 		// execute it into a new file and set the mode.
-
-		// Parse the template first so we don't create a file
-		// for a broken template.
-		t, err := template.ParseFiles(path)
+		src, err := os.Open(path)
 		if err != nil {
 			return err
 		}
+		defer src.Close()
 
 		// Create/truncate the target file and set it's mode before
 		// executing the template
-		f, err := os.Create(targetPath)
+		dest, err := os.Create(targetPath)
 		if err != nil {
 			return err
 		}
-		defer f.Close()
+		defer dest.Close()
 
-		err = f.Chmod(info.Mode())
+		err = dest.Chmod(info.Mode())
 		if err != nil {
 			return err
 		}
 
-		return t.Execute(f, data)
+		return renderTemplate(src, dest, data)
 	}
 
 	return filepath.Walk(rootDir, walker)
