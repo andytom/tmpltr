@@ -13,7 +13,8 @@ A command line tool to create files and directories from a template.
 * **Single Binary** - No dependencies to install just a single binary to add to
   your PATH and run
 * **Powerful Templates** - Templates are written in the powerful [Golang
-  Template language](https://golang.org/pkg/text/template/)
+  Template language](https://golang.org/pkg/text/template/) and [sprig
+functions](http://masterminds.github.io/sprig/)
 * **Template Paths and Contents** - You can template both the path and the
   content of files
 * **Simple Interactive UI** - Easy to use UI based on

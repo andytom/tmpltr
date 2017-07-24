@@ -1,13 +1,23 @@
-hash: 7a8648c1937988faa1eb5a8dd4396d5b216d9807ccd8d511df54fc689837d158
-updated: 2017-07-03T19:42:15.497157504+01:00
+hash: 5c689be7ce671cd874a30d7a2f8f000b7b1ddc25b0ee6eb94448ddb2e8cfafb6
+updated: 2017-07-16T18:21:49.012578134+01:00
 imports:
 - name: github.com/AlecAivazis/survey
   version: 00a7beaac7eae538637cae6455d99d1ce8b66497
   subpackages:
   - core
   - terminal
+- name: github.com/aokoli/goutils
+  version: 3391d3790d23d03408670993e957e8f408993c34
+- name: github.com/huandu/xstrings
+  version: 3959339b333561bf62a38b424fd41517c2c90f40
+- name: github.com/imdario/mergo
+  version: 3e95a51e0639b4cf372f2ccf74c86749d747fbdc
 - name: github.com/inconshreveable/mousetrap
   version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/Masterminds/semver
+  version: 59c29afe1a994eacb71c833025ca7acf874bb1da
+- name: github.com/Masterminds/sprig
+  version: 9526be0327b26ad31aa70296a7b10704883976d5
 - name: github.com/mattn/go-colorable
   version: ded68f7a9561c023e790de24279db7ebf473ea80
 - name: github.com/mattn/go-isatty
@@ -20,10 +30,17 @@ imports:
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/olekukonko/tablewriter
   version: febf2d34b54a69ce7530036c7503b1c9fbfdf0bb
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
 - name: github.com/spf13/cobra
   version: 1dd5ff2e11b6dca62fdcb275eb804b94607d8b06
 - name: github.com/spf13/pflag
   version: 25f8b5b07aece3207895bf19f7ab517eb3b22a40
+- name: golang.org/x/crypto
+  version: 7f7c0c2d75ebb4e32a21396ce36e87b6dadc91c9
+  subpackages:
+  - pbkdf2
+  - scrypt
 - name: golang.org/x/sys
   version: 493114f68206f85e7e333beccfabc11e98cba8dd
   subpackages:

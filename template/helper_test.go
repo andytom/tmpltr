@@ -1,11 +1,86 @@
 package template
 
 import (
+	"bytes"
+	"io"
+	"os"
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/AlecAivazis/survey"
 )
+
+func TestRenderTemplate(t *testing.T) {
+	testCases := [...]struct {
+		name          string
+		inputTemplate io.Reader
+		inputData     map[string]interface{}
+		expected      string
+		hasError      bool
+	}{
+		{
+			name:          "Non-template input",
+			inputTemplate: strings.NewReader("test"),
+			expected:      "test",
+			hasError:      false,
+		},
+		{
+			name:          "Basic Input",
+			inputTemplate: strings.NewReader("{{ .a }}"),
+			inputData:     map[string]interface{}{"a": "test"},
+			expected:      "test",
+			hasError:      false,
+		},
+		{
+			name: "Invalid Template - Broken input template",
+			// This creates a nil pointer to an os.File which will
+			// act like an io.Reader but it will error when you try
+			// to read from it.
+			inputTemplate: (*os.File)(nil),
+			hasError:      true,
+		},
+		{
+			name:          "Invalid template - Missing final '}'",
+			inputTemplate: strings.NewReader("{{ .a }"),
+			hasError:      true,
+		},
+		{
+			name:          "Invalid Template - Invalid function",
+			inputTemplate: strings.NewReader("{{ NoSuchFunction }}"),
+			hasError:      true,
+		},
+		{
+			name:          "Invalid Template - Broken Import",
+			inputTemplate: strings.NewReader("{{ template \"No Such Template\" . }}"),
+			hasError:      true,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+
+			var out bytes.Buffer
+
+			err := renderTemplate(tc.inputTemplate, &out, tc.inputData)
+
+			if tc.hasError {
+				if err == nil {
+					t.Errorf("Expected an error but didn't get one!")
+				}
+			} else {
+				if err != nil {
+					t.Errorf("Got an unexpected error %q", err)
+				}
+			}
+
+			if out.String() != tc.expected {
+				t.Errorf("Expected %q but got %q", tc.expected, out.String())
+			}
+
+		})
+	}
+}
 
 func TestTemplatePath(t *testing.T) {
 	testCases := [...]struct {
@@ -34,21 +109,6 @@ func TestTemplatePath(t *testing.T) {
 			expected: "/path/to/some/test/dir",
 			data:     map[string]interface{}{"a": "test"},
 			hasError: false,
-		},
-		{
-			name:     "Invalid template - Missing final '}'",
-			input:    "{{ .a }",
-			hasError: true,
-		},
-		{
-			name:     "Invalid Template - Invalid function",
-			input:    "{{ NoSuchFunction }}",
-			hasError: true,
-		},
-		{
-			name:     "Invalid Template - Broken Import",
-			input:    "{{ template \"No Such Template\" . }}",
-			hasError: true,
 		},
 	}
 

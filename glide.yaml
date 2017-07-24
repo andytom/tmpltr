@@ -6,3 +6,5 @@ import:
 - package: github.com/spf13/cobra
 - package: github.com/olekukonko/tablewriter
 - package: github.com/mitchellh/go-homedir
+- package: github.com/Masterminds/sprig
+  version: ~2.12.0
