@@ -8,7 +8,7 @@ PKGS = $(shell go list ./... | grep -v /vendor/)
 VERSION = $(shell git describe --exact-match --tags 2>/dev/null)
 
 # Build Flags
-LDFLAGS = -ldflags "-X cmd.version.version=${VERSION}"
+LDFLAGS = -ldflags "-X github.com/andytom/tmpltr/cmd.version=${VERSION}"
 
 # Build directory and upload dest
 BUILD_DIR = .out
